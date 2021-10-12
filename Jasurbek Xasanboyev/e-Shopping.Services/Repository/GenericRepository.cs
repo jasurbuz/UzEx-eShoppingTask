@@ -41,10 +41,6 @@ namespace e_Shopping.Services.Repository
             _db.Remove(entity);
         }
 
-        public async Task DeleteRange(IEnumerable<T> entities)
-        {
-            //await _db.BulkDeleteAsync(entities);
-        }
 
         public async Task<T> Get(Expression<Func<T, bool>> expression, List<string> includes = null)
         {
@@ -112,12 +108,6 @@ namespace e_Shopping.Services.Repository
         public async Task Insert(T entity)
         {
             await _db.AddAsync(entity);
-        }
-
-
-        public async Task InsertRange(IEnumerable<T> entities)
-        {
-            //await _db.BulkInsertAsync(entities);
         }
 
         public async Task<IPagedList<T>> SearchPagedList(RequestParams requestParams, Expression<Func<T, bool>> expression = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, List<string> includes = null)

@@ -31,11 +31,8 @@ namespace e_Shopping.Services
 
         Task Insert(T entity);
 
-        Task InsertRange(IEnumerable<T> entities);
 
         void Delete(T entity);
-
-        Task DeleteRange(IEnumerable<T> entities);
 
         void Update(T entity);
     
