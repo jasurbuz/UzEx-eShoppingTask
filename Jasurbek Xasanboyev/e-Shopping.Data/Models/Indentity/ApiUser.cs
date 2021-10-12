@@ -23,12 +23,5 @@ namespace e_Shopping.Data.Models
         public string District { get; set; }
 
         public string Street { get; set; }
-
-        public string ImageName { get; set; }
-
-        public override bool LockoutEnabled => true;
-
-        public ICollection<Event> Events { get; set; }
-            = new List<Event>();
     }
 }
