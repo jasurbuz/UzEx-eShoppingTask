@@ -1,4 +1,5 @@
 using e_Shopping.Data.Contexts;
+using e_Shopping.Services.IRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -6,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MVC_e_Shopping.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +29,14 @@ namespace MVC_e_Shopping
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnectionString")));
+
             services.AddControllersWithViews();
+
             services.ConfigureIdentity();
             services.ConfigureJwt(Configuration);
+
+            //services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IAuthManager, AuthManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,11 +48,8 @@ namespace MVC_e_Shopping
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
+                app.UseExceptionHandler("/Home/Error");                
             }
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
