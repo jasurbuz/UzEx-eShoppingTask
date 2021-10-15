@@ -1,5 +1,7 @@
 using e_Shopping.Data.Contexts;
+using e_Shopping.Data.Models;
 using e_Shopping.Services.IRepository;
+using e_Shopping.Services.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,10 +34,14 @@ namespace MVC_e_Shopping
 
             services.AddControllersWithViews();
 
+            services.AddAutoMapper(typeof(Startup));
+
+            services.AddIdentityCore<ApiUser>();
+
             services.ConfigureIdentity();
             services.ConfigureJwt(Configuration);
 
-            //services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAuthManager, AuthManager>();
         }
 
@@ -60,7 +66,7 @@ namespace MVC_e_Shopping
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Client}/{action=Index}/{id?}");
             });
         }
     }
