@@ -1,0 +1,41 @@
+body {
+    display:flex; height:100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    width: 400px;
+    padding: 20px;
+    background: linear-gradient(rgb(30, 184, 255), rgb(0, 98, 128));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+input, select {
+    width: 80% !important;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    margin: 10px 10px 10px 40px;
+}
+
+.radio-status {
+    display: flex !important;
+    width: 60%;
+    align-items:center;
+    margin: 0px 0px 0px 50px;
+}
+
+.col-md-4 {
+    width: 100% !important;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
