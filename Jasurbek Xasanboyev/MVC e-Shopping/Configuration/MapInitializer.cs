@@ -1,0 +1,18 @@
+﻿using AutoMapper;
+using e_Shopping.Data.Models;
+using e_Shopping.Services.DTOs.Client;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace MVC_e_Shopping.Configuration
+{
+    public class MapInitializer : Profile
+    {
+        public MapInitializer()
+        {
+            CreateMap<Client, ClientForCreationDto>().ReverseMap();
+        }
+    }
+}
