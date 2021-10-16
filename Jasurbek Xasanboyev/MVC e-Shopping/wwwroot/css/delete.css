@@ -1,0 +1,10 @@
+﻿body {
+    display: flex !important;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.row {
+    width: 100vh;
+}

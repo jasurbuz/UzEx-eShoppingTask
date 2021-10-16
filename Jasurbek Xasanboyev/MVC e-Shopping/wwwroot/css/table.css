@@ -1,0 +1,26 @@
+﻿#client {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #client td, #client th {
+        border: 1px solid #0a00ff;
+        padding: 8px;
+    }
+
+#client tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#client tr:hover {
+    background-color: #ddd;
+}
+
+    #client th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #0a00ff;
+        color: white;
+    }

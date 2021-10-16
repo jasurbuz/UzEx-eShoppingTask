@@ -1,0 +1,7 @@
+body{
+    justify-content:center;
+    display: flex;
+}
+.form-group radio-status{
+    width: 50%;
+}

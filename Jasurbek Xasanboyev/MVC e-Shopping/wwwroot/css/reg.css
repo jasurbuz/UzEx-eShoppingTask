@@ -20,14 +20,14 @@ input, select {
     border-radius: 5px;
     outline: none;
     border: none;
-    margin: 10px 10px 10px 40px;
+    margin: 10px 10px 10px 35px;
 }
 
 .radio-status {
     display: flex !important;
-    width: 60%;
+    width: 70%;
     align-items:center;
-    margin: 0px 0px 0px 50px;
+    margin: 0px 0px 0px 40px;
 }
 
 .col-md-4 {
