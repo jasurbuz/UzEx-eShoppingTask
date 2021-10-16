@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using e_Shopping.Data.Models;
 using e_Shopping.Services.DTOs.Client;
+using e_Shopping.Services.DTOs.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace MVC_e_Shopping.Configuration
         public MapInitializer()
         {
             CreateMap<Client, ClientForCreationDto>().ReverseMap();
+            CreateMap<Product, ProductForCreationDto>().ReverseMap();
         }
     }
 }
