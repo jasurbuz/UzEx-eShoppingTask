@@ -10,7 +10,7 @@ using e_Shopping.Data.Contexts;
 namespace e_Shopping.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20211012052426_Initial")]
+    [Migration("20211017105626_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,11 +238,9 @@ namespace e_Shopping.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId")
-                        .IsUnique();
+                    b.HasIndex("ClientId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Bids");
                 });
@@ -265,7 +263,16 @@ namespace e_Shopping.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Region")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -392,14 +399,14 @@ namespace e_Shopping.Data.Migrations
             modelBuilder.Entity("e_Shopping.Data.Models.Bid", b =>
                 {
                     b.HasOne("e_Shopping.Data.Models.Client", "Client")
-                        .WithOne("Bid")
-                        .HasForeignKey("e_Shopping.Data.Models.Bid", "ClientId")
+                        .WithMany("Bids")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("e_Shopping.Data.Models.Product", "Product")
-                        .WithOne("Bid")
-                        .HasForeignKey("e_Shopping.Data.Models.Bid", "ProductId")
+                        .WithMany("Bids")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -410,12 +417,12 @@ namespace e_Shopping.Data.Migrations
 
             modelBuilder.Entity("e_Shopping.Data.Models.Client", b =>
                 {
-                    b.Navigation("Bid");
+                    b.Navigation("Bids");
                 });
 
             modelBuilder.Entity("e_Shopping.Data.Models.Product", b =>
                 {
-                    b.Navigation("Bid");
+                    b.Navigation("Bids");
                 });
 #pragma warning restore 612, 618
         }

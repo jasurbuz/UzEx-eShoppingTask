@@ -1,0 +1,45 @@
+﻿#bid {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    align-content:center;
+}
+
+#bid td, #bid th {
+    border: 1px solid #0a00ff;
+    padding: 8px;
+}
+
+#bid tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#bid tr:hover {
+    background-color: #ddd;
+}
+
+#bid th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0a00ff;
+    color: white;
+}
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+button {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}

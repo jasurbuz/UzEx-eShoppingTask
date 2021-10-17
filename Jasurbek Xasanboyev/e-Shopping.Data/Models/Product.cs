@@ -14,7 +14,7 @@ namespace e_Shopping.Data.Models
         public double Price { get; set; }
 
         #region Relation
-        public Bid Bid { get; set; }
+        public ICollection<Bid> Bids { get; set; }
         #endregion
     }
 }

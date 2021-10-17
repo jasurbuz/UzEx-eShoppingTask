@@ -29,7 +29,7 @@ namespace MVC_e_Shopping.Controllers
             return View(products.ToList());
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }

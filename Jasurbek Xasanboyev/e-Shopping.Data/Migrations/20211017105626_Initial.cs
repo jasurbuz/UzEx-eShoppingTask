@@ -61,9 +61,12 @@ namespace e_Shopping.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     INN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -261,14 +264,12 @@ namespace e_Shopping.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Bids_ClientId",
                 table: "Bids",
-                column: "ClientId",
-                unique: true);
+                column: "ClientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bids_ProductId",
                 table: "Bids",
-                column: "ProductId",
-                unique: true);
+                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

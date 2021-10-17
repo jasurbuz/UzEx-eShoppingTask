@@ -1,7 +1,17 @@
-body{
-    justify-content:center;
-    display: flex;
+body {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.form-group radio-status{
-    width: 50%;
+
+.form-group, select {
+    width: 300px;
+    justify-content: center;
+    align-content: center;
+}
+
+.btn btn-primary {
+    justify-content: center;
+    align-content: center;
 }

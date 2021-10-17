@@ -15,14 +15,13 @@ namespace e_Shopping.Data.Contexts
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Client>()
-                .HasOne<Bid>(client => client.Bid)
-                .WithOne(bid => bid.Client)
-                .HasForeignKey<Bid>(bid => bid.ClientId);
+                .HasMany<Bid>(client => client.Bids)
+                .WithOne(bid => bid.Client);
+                
 
             builder.Entity<Product>()
-                .HasOne<Bid>(product => product.Bid)
-                .WithOne(bid => bid.Product)
-                .HasForeignKey<Bid>(bid => bid.ProductId);
+                .HasMany<Bid>(product => product.Bids)
+                .WithOne(bid => bid.Product);
 
             base.OnModelCreating(builder);
         }

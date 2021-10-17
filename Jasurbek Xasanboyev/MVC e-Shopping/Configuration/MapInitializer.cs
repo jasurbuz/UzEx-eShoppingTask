@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using e_Shopping.Data.Models;
+using e_Shopping.Services.DTOs.Bid;
 using e_Shopping.Services.DTOs.Client;
 using e_Shopping.Services.DTOs.Product;
 using System;
@@ -15,6 +16,7 @@ namespace MVC_e_Shopping.Configuration
         {
             CreateMap<Client, ClientForCreationDto>().ReverseMap();
             CreateMap<Product, ProductForCreationDto>().ReverseMap();
+            CreateMap<Bid, BidForCreationDto>().ReverseMap();
         }
     }
 }

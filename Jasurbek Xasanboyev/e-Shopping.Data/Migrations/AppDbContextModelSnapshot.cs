@@ -236,11 +236,9 @@ namespace e_Shopping.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId")
-                        .IsUnique();
+                    b.HasIndex("ClientId");
 
-                    b.HasIndex("ProductId")
-                        .IsUnique();
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Bids");
                 });
@@ -399,14 +397,14 @@ namespace e_Shopping.Data.Migrations
             modelBuilder.Entity("e_Shopping.Data.Models.Bid", b =>
                 {
                     b.HasOne("e_Shopping.Data.Models.Client", "Client")
-                        .WithOne("Bid")
-                        .HasForeignKey("e_Shopping.Data.Models.Bid", "ClientId")
+                        .WithMany("Bids")
+                        .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("e_Shopping.Data.Models.Product", "Product")
-                        .WithOne("Bid")
-                        .HasForeignKey("e_Shopping.Data.Models.Bid", "ProductId")
+                        .WithMany("Bids")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -417,12 +415,12 @@ namespace e_Shopping.Data.Migrations
 
             modelBuilder.Entity("e_Shopping.Data.Models.Client", b =>
                 {
-                    b.Navigation("Bid");
+                    b.Navigation("Bids");
                 });
 
             modelBuilder.Entity("e_Shopping.Data.Models.Product", b =>
                 {
-                    b.Navigation("Bid");
+                    b.Navigation("Bids");
                 });
 #pragma warning restore 612, 618
         }

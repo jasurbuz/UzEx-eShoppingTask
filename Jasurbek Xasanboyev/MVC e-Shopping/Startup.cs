@@ -66,7 +66,7 @@ namespace MVC_e_Shopping
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Admin}/{action=Index}/{id?}");
+                    pattern: "{controller=Bid}/{action=Index}/{id?}");
             });
         }
     }
