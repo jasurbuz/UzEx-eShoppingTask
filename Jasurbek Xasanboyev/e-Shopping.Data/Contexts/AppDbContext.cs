@@ -1,4 +1,5 @@
-﻿using e_Shopping.Data.Models;
+﻿using e_Shopping.Data.Confiigurations;
+using e_Shopping.Data.Models;
 using e_Shopping.Data.Models.Indentity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ namespace e_Shopping.Data.Contexts
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            #region Relation
             builder.Entity<Client>()
                 .HasMany<Bid>(client => client.Bids)
                 .WithOne(bid => bid.Client);
@@ -23,6 +25,16 @@ namespace e_Shopping.Data.Contexts
                 .HasMany<Bid>(product => product.Bids)
                 .WithOne(bid => bid.Product);
 
+            #endregion
+            
+            #region Configuration
+
+            builder.ApplyConfiguration(new ClientConfiguration());
+
+            builder.ApplyConfiguration(new ProductConfiguration());
+
+            #endregion
+            
             base.OnModelCreating(builder);
         }
 
