@@ -37,23 +37,18 @@ namespace MVC_e_Shopping.Controllers
 
         public async Task<IActionResult> Bidding(BidForCreationDto bidDto)
         {
-            Bid bid = new Bid() {
-                Id = new Guid(),
-                Client = await _unitOfWork.Clients.Get(c => c.Id == bidDto.ClientId),
-                Product = await _unitOfWork.Products.Get(p => p.Id == bidDto.ProductId),
-                ClientId = bidDto.ClientId,
-                ProductId = bidDto.ProductId,
-                Count = bidDto.Count,
-            };
-            bid.Total = bid.Product.Price * bidDto.Count;
+            Bid bid = _mapper.Map<Bid>(bidDto);
 
-            var product = bid.Product;
+            var product = await _unitOfWork.Products.Get(p => p.Id == bidDto.ProductId);
+
+            bid.Total = product.Price * bidDto.Count;
 
             product.Count -= bidDto.Count;
 
             _unitOfWork.Products.Update(product);
 
             await _unitOfWork.Bids.Insert(bid);
+
             await _unitOfWork.Save();
 
             return Redirect("Index");
