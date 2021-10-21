@@ -2,6 +2,7 @@
 using e_Shopping.Data.Models;
 using e_Shopping.Services.DTOs.Bid;
 using e_Shopping.Services.IRepository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace MVC_e_Shopping.Controllers
 
             _mapper = mapper;
         }
+
         public async Task<IActionResult> Index()
         {
             var products = await _unitOfWork.Products.GetAll(p => p.Count > 0);

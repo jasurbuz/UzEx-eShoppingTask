@@ -2,6 +2,7 @@ using e_Shopping.Data.Contexts;
 using e_Shopping.Data.Models;
 using e_Shopping.Services.IRepository;
 using e_Shopping.Services.Repository;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,9 @@ namespace MVC_e_Shopping
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnectionString")));
 
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie();
+
             services.AddControllersWithViews();
 
             services.AddAutoMapper(typeof(Startup));
@@ -60,13 +64,14 @@ namespace MVC_e_Shopping
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Bid}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }

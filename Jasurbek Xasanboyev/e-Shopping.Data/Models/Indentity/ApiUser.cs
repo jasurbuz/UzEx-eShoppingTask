@@ -14,14 +14,6 @@ namespace e_Shopping.Data.Models
 
         public string LastName { get; set; }
 
-        public string MiddleName { get; set; }
-
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-
-        public string Region { get; set; }
-
-        public string District { get; set; }
-
-        public string Street { get; set; }
+        public string Password { get; set; }
     }
 }
